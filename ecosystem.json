@@ -1,0 +1,17 @@
+{
+  "apps": [{
+    "name": "wechat-submit",
+    "script": "index.js",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss"
+  }],
+  "deploy" : {
+    "stage" : {
+      "user" : "deploy",
+      "host" : "stage.ers.local",
+      "ref"  : "origin/master",
+      "repo" : "git@gitlab.ers.local:wechat-submit/wechat-submit.git",
+      "path" : "~/wechat-submit",
+      "post-deploy" : "pm2 startOrRestart ecosystem.json"
+    }
+  }
+}
